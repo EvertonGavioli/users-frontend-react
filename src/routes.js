@@ -1,8 +1,8 @@
-import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import Users from './pages/Users';
-import UsersDetails from './pages/UsersDetails';
+import Users from "./pages/Users";
+import UsersDetails from "./pages/UserDetails";
 
 export default function Routes() {
   return (
