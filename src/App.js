@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 
 import "./config/ReactotronConfig";
 
+import GlobalStyles from './styles/global';
 import Routes from "./routes";
 
 import history from "./services/history";
@@ -14,6 +15,7 @@ function App() {
     <Provider store={store}>
       <Router history={history}>
         <Routes />
+        <GlobalStyles />
       </Router>
     </Provider>
   );
