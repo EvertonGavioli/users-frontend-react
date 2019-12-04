@@ -9,7 +9,7 @@ import List from '../../components/User/List';
 import { Container } from './styles';
 
 export default function Users() {
-  const listUsers = useSelector(state => state.user);
+  const listUsers = useSelector(state => state.users);
   const [users, setUsers] = useState([]);
 
   useEffect(() => {

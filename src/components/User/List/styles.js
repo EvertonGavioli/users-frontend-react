@@ -68,7 +68,15 @@ export const ListUsers = styled.ul`
 
     .user-actions {
       text-align: center;
-      border-left: 1px solid #000;     
+      border-left: 1px solid #000;
+
+      .user-actions-span {
+        text-decoration: underline;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }     
     }
   }
 
@@ -111,14 +119,6 @@ export const ListUsers = styled.ul`
 
       .user-actions {
         border:none;
-        
-        .user-actions-span {
-          text-decoration: underline;
-
-          &:hover {
-            cursor: pointer;
-          }
-        }   
       } 
     }
   } 

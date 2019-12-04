@@ -1,13 +1,25 @@
 import React from 'react';
+import { useDispatch } from "react-redux";
+
+import { removeUser } from "../../../store/modules/users/actions";
 
 import history from '../../../services/history';
 
 import { Container, Content, Header, ListUsers } from './styles';
 
 export default function List({ data }) {
+  const dispatch = useDispatch();
+
+  function handleShowClick(user) {
+    history.push("/user", { user });
+  }
+
+  function handleDeleteUser({ id }) {
+    dispatch(removeUser(id))
+  }
+
   return (
     <Container>
-      {console.log(data)}
       <Content>
         <Header>
           <div>
@@ -28,11 +40,9 @@ export default function List({ data }) {
                 <span id='user-description'>{user.description}</span>
               </div>
               <div className='user-actions'>
-                <span className='user-actions-span' onClick={() => {
-                  history.push("/user", { user });
-                }}>Show</span>
+                <span className='user-actions-span' onClick={() => handleShowClick(user)}>Show</span>
                 <span> | </span>
-                <span className='user-actions-span'>Delete</span>
+                <span className='user-actions-span' onClick={() => handleDeleteUser(user)}>Delete</span>
               </div>
             </li>
           ))}
