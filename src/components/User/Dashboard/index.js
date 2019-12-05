@@ -7,7 +7,7 @@ import history from '../../../services/history';
 
 import { Container, Content, Filter, Header, ListUsers } from './styles';
 
-export default function List() {
+export default function Dashboard() {
   const dispatch = useDispatch();
   const listUsers = useSelector(state => state.users);
 
@@ -19,7 +19,7 @@ export default function List() {
       (user.firstName + " " + user.lastName).toLowerCase().includes(searchName));
 
     setUsers(results);
-  }, [searchName, listUsers])
+  }, [searchName, listUsers]);
 
   const countSelected = useMemo(() => {
     return users.filter(user => user.selected === true).length;
@@ -67,7 +67,12 @@ export default function List() {
         <Filter>
           <div>
             <span>Filter by name</span>
-            <input type="text" value={searchName} onChange={handleChangeFilter} />
+            <input
+              type="text"
+              maxLength={25}
+              value={searchName}
+              onChange={handleChangeFilter}
+            />
           </div>
           <button
             type='button'
@@ -82,18 +87,27 @@ export default function List() {
             Download
           </button>
         </Filter>
+
         <Header>
           <div>
-            <input type="checkbox" onChange={e => handleSelectAll(e.target.checked)} />
+            <input
+              type="checkbox"
+              onChange={e => handleSelectAll(e.target.checked)}
+            />
           </div>
           <span>Name</span>
           <span>Actions</span>
         </Header>
+
         <ListUsers>
           {users.map(user => (
             <li key={user.id}>
               <div className='user-checkbox'>
-                <input type="checkbox" checked={!!user.selected} onChange={e => handleSelectUser(user.id, e.target.checked)} />
+                <input
+                  type="checkbox"
+                  checked={!!user.selected}
+                  onChange={e => handleSelectUser(user.id, e.target.checked)}
+                />
               </div>
               <div className='user-profile'>
                 <span>{user.firstName + " " + user.lastName}</span>
@@ -102,13 +116,13 @@ export default function List() {
               </div>
               <div className='user-actions'>
                 <span className='user-actions-span' onClick={() => handleShowClick(user)}>Show</span>
-                <span> | </span>
+                <span>|</span>
                 <span className='user-actions-span' onClick={() => handleDeleteUser(user)}>Delete</span>
               </div>
             </li>
           ))}
         </ListUsers>
-        <span>{countSelected} items selected.</span>
+        <span id="count-selected">{countSelected} items selected</span>
       </Content>
     </Container>
   );
