@@ -19,6 +19,15 @@ export default function users(state = INITIAL_STATE, action) {
         draft.splice(userIndex, 1);
         break;
       }
+      case "@user/SELECT_USER_REQUEST": {
+        const userIndex = draft.findIndex(obj => obj.id === action.id);
+        draft[userIndex] = { ...draft[userIndex], selected: action.selected }
+        break;
+      }
+      case "@user/SELECT_ALL_USERS_REQUEST": {
+        draft = draft.map(user => user.selected = action.selected);
+        break;
+      }
       default:
     }
   });

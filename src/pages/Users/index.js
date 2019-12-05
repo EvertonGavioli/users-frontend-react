@@ -1,25 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector } from "react-redux";
+import React from 'react';
 
-// import api from '../../services/api';
-
-import Header from '../../components/User/Header';
-import List from '../../components/User/List';
+import Dashboard from '../../components/User/Dashboard';
 
 import { Container } from './styles';
 
 export default function Users() {
-  const listUsers = useSelector(state => state.users);
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    setUsers(listUsers);
-  }, [listUsers])
-
   return (
     <Container>
-      <Header />
-      <List data={users} />
+      <Dashboard />
     </Container>
   );
 }

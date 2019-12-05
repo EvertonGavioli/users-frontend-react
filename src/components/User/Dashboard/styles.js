@@ -9,6 +9,51 @@ export const Content = styled.div`
   flex-direction: column;
 `;
 
+export const Filter = styled.div` 
+  display: flex;
+  align-items: flex-end;
+  flex: 1;
+  padding: 20px 0px 20px 0px;
+
+  div {
+    display: flex;
+    flex-direction: column;
+
+    span {
+      font-size: 12px;
+      color: #999;
+    }
+
+    input {
+      padding: 2px;
+      min-width: 180px;
+    }
+  }
+
+  button {
+    min-width: 180px;
+    margin-left: 20px;
+    padding: 2px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    flex-direction: column;
+    align-items: center;
+    
+    div {
+      input {
+        min-width: 280px;
+      }
+    }
+
+    button {
+      margin-left: 0;
+      margin-top: 10px;
+      min-width: 280px;
+    }
+  }
+`;
+
 export const Header = styled.div`
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 3fr) minmax(0, 2fr);

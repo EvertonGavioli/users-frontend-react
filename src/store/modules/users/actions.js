@@ -11,3 +11,18 @@ export function updateUser(user) {
     payload: { user }
   };
 }
+
+export function selectedUser(id, selected) {
+  return {
+    type: "@user/SELECT_USER_REQUEST",
+    id,
+    selected
+  };
+}
+
+export function selectedAll(selected) {
+  return {
+    type: "@user/SELECT_ALL_USERS_REQUEST",
+    selected
+  };
+}
